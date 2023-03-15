@@ -6,3 +6,5 @@ def print_sorted_dictionary(a_dictionary):
     mykeys = list(a_dictionary.keys())
     mykeys.sort()
     sorted_dict = {i: a_dictionary[i] for i in mykeys}
+
+    return (sorted_dict)
