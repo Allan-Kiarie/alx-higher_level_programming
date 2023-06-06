@@ -1,0 +1,39 @@
+# 3-say_my_name.txt
+
+This module tests the function `say_my_name(first_name, last_name="")`,
+which prints 'My name is <first_name> <last_name>'.
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+>>> say_my_name("Allan", "Kiarie")
+My name is Allan Kiarie
+
+>>> say_my_name("John Gaius", "Caesar")
+My name is John Gaius Caesar
+
+>>> say_my_name("Perrin")
+My name is Perrin
+
+>>> say_my_name(12, "Cauthon")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("Althor", 45)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name("Allan", ["Kiarie", "John", "Egwene"])
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name({"Allan": 6}, {"Kiarie": 7})
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
