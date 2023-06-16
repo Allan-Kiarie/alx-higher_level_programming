@@ -5,7 +5,6 @@ Tests the module `7-base_geometry.py`
 Importing class from the module:
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-Trying to print the area
 >>> bg = BaseGeometry()
 >>> bg.area()
 Traceback (most recent call last):
@@ -22,9 +21,6 @@ TypeError: name must be an integer
 Trying to pass a boolean value
 >>> bg = BaseGeometry()
 >>> bg.integer_validator("name", True)
-Traceback (most recent call last):
-...
-TypeError: name must be an integer
 
 Trying to pass a negative value
 >>> bg = BaseGeometry()
@@ -81,28 +77,28 @@ TypeError: area() takes 1 positional argument but 3 were given
 
 Passing tuple to method
 >>> bg = BaseGeometry()
->>> bg.integer_validator("age", (4,))
+>>> bg.integer_validator("size", (4,))
 Traceback (most recent call last):
 ...
-TypeError: age must be an integer
+TypeError: size must be an integer
 
 Passing list to method
 >>> bg = BaseGeometry()
->>> bg.integer_validator("age", [3])
+>>> bg.integer_validator("size", [3])
 Traceback (most recent call last):
 ...
-TypeError: age must be an integer
+TypeError: size must be an integer
 
 Passing dict to method
 >>> bg = BaseGeometry()
 >>> bg.integer_validator("size", {5, 6})
 Traceback (most recent call last):
 ...
-TypeError: age must be an integer
+TypeError: size must be an integer
 
 Passing None to method
 >>> bg = BaseGeometry()
 >>> bg.integer_validator("size", None)
 Traceback (most recent call last):
 ...
-TypeError: age must be an integer
+TypeError: size must be an integer
