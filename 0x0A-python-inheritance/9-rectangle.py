@@ -25,7 +25,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """Print a representation of the object rectangle"""
-        my_str = "[" + str(type(self).__name__) + "]"
-        my_str += str(self.__width) + "/" + str(self.__height)
+        my_str = "[Rectangle] " + str(self.__width) + "/" + str(self.__height)
 
         return my_str
