@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 # base.py
 """Defines a class Base."""
 
@@ -9,7 +9,11 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initializes the object Base"""
+        """Initializes the object Base.
+
+        Args:
+            id(int): identify of the class Base.
+        """
         if id is not None:
             self.id = id
 
