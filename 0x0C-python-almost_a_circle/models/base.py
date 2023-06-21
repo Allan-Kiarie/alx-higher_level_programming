@@ -2,7 +2,7 @@
 # base.py
 """Defines a class Base."""
 import json
-
+import csv
 
 class Base:
     """A representation of the object base"""
@@ -91,3 +91,43 @@ class Base:
                 return [cls.create(**dict) for dict in list_dicts]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes a list of objects to a file.
+
+        Args:
+            list_objs(list): list of instances of a class.
+        """
+        filename = cls.__name__ + '.csv'
+
+        with open(filename, 'w', newline="") as csvfile:
+            if list_objs is None or list_objs == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fields = ["id", "size", "x", "y"]
+                csvwriter = csv.DictWriter(csvfile, fieldnames=fields)
+                for obj in list_objs:
+                    csvwriter.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize a list of class instances from a csv file."""
+        filename = cls.__name__ + '.csv'
+
+        try:
+            with open(filename, 'r', newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fields = ["id", "size", "x", "y"]
+                csvreader = csv.DictReader(csvfile, fieldnames=fields)
+                list_dicts = [dict([key, int(value)] for
+                                   key, value in d.items())
+                                   for d in csvreader]
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+                return []
